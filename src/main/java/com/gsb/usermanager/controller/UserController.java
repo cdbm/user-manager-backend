@@ -2,6 +2,7 @@ package com.gsb.usermanager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,12 +17,14 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
+	@CrossOrigin
 	@PostMapping("/saveUser")
 	public ResponseEntity saveUser(@RequestBody User user) {
 		this.service.saveUser(user);
 		return ResponseEntity.ok().build();
 	}
 	
+	@CrossOrigin
 	@GetMapping("/getUsers")
 	public ResponseEntity getUsers() {
 		return ResponseEntity.ok(this.service.getUsers());
